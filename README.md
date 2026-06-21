@@ -1,6 +1,6 @@
 # Nexus AI
 
-Nexus AI is a full-stack AI assistant that combines FastAPI, React, Ollama, and Mem0 to provide personalized conversations with long-term memory.
+An agentic AI assistant with long-term memory that remembers user information, updates outdated facts, and delivers personalized responses using FastAPI, React, Ollama, and Mem0.
 
 The system remembers user information, retrieves relevant memories, updates outdated facts, and delivers context-aware responses using an agentic memory pipeline.
 
@@ -17,6 +17,31 @@ The system remembers user information, retrieves relevant memories, updates outd
 - Modern React chat interface
 - Memory management dashboard
 - FastAPI REST APIs
+
+---
+
+## Architecture
+
+User
+   │
+   ▼
+React Frontend
+   │
+   ▼
+FastAPI Backend
+   │
+   ▼
+Agent Pipeline
+   ├── Memory Retrieval
+   ├── Response Generation
+   ├── Fact Extraction
+   └── Memory Reconciliation
+          │
+          ▼
+        Mem0
+          │
+          ▼
+       Ollama
 
 ---
 
