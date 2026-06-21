@@ -1,131 +1,174 @@
 # Nexus AI
 
-Nexus AI is a full-stack personal assistant that combines React + Vite frontend with a FastAPI backend, Ollama LLMs, and Mem0 long-term memory.
+Nexus AI is a full-stack AI assistant that combines FastAPI, React, Ollama, and Mem0 to provide personalized conversations with long-term memory.
 
-The assistant uses an agentic pipeline for durable user memory:
-- memory retrieval and reranking
-- response generation
-- fact extraction from user messages
-- memory reconciliation and memory consolidation
+The system remembers user information, retrieves relevant memories, updates outdated facts, and delivers context-aware responses using an agentic memory pipeline.
 
-## What makes this project strong
+---
 
-- **Modular agent pipeline**: separate orchestrator, memory ranker, extractor, and reconciler agents.
-- **Memory-driven personalization**: the system stores facts from user inputs and uses them to answer later questions.
-- **FastAPI backend with Mem0 memory store**: reusable backend architecture for long-term memory.
-- **Modern React frontend**: intuitive chat UI, memory viewer, and settings.
-- **Designed for resume/portfolio**: a practical AI assistant implementation with agentic workflow and reusable components.
+## Features
 
-## Key features
+- Personalized AI conversations
+- Long-term memory with Mem0
+- Memory retrieval and reranking
+- Fact extraction from conversations
+- Memory reconciliation and conflict resolution
+- Multi-user support
+- Modern React chat interface
+- Memory management dashboard
+- FastAPI REST APIs
 
-- Chat with a personal AI assistant powered by Ollama.
-- Automatic extraction of memory facts from conversation.
-- Memory reranking to surface the most relevant context.
-- Memory reconciliation to avoid duplicates and correct old facts.
-- Memory browsing, search, and manual ingestion UI.
-- User session handling via local storage and per-user memory.
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React, Vite, Tailwind CSS |
+| Backend | FastAPI |
+| LLM | Ollama |
+| Memory | Mem0 |
+| Language | Python |
+| API | REST API |
+
+---
 
 ## Architecture
 
-- `backend/`
-  - `app.py`: FastAPI service exposing chat, memory, and history APIs.
-  - `agent.py`: LLM agent builder and prompt helpers.
-  - `memory.py`: Mem0 adapter for saving, searching, and updating memories.
-  - `history.py`: short-term chat history manager.
-  - `config.py`: environment and agent prompt configuration.
+```text
+User
+  │
+React Frontend
+  │
+FastAPI Backend
+  │
+Agent Pipeline
+  ├── Memory Retrieval
+  ├── Memory Reranking
+  ├── Response Generation
+  ├── Fact Extraction
+  └── Memory Reconciliation
+  │
+Mem0 + Ollama
+```
 
-- `frontend/`
-  - React + Vite SPA with chat, memory, and settings pages.
-  - Local user ID storage for multi-user sessions.
-  - Axios API client for backend communication.
+---
 
-## Setup
+## Agent Workflow
+
+1. User sends a message.
+2. Relevant memories are retrieved.
+3. Memories are reranked.
+4. The assistant generates a response.
+5. New facts are extracted.
+6. Conflicting memories are reconciled.
+7. Updated memories are stored.
+
+---
+
+## Memory Reconciliation
+
+The reconciliation agent helps maintain accurate memories by:
+
+- Removing duplicate memories
+- Updating outdated facts
+- Merging similar information
+- Resolving conflicting facts
+- Maintaining a clean memory store
+
+---
+
+## Project Structure
+
+```text
+NexusAI/
+│
+├── backend/
+│   ├── app.py
+│   ├── agent.py
+│   ├── memory.py
+│   ├── history.py
+│   └── config.py
+│
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   └── layouts/
+│
+└── README.md
+```
+
+---
+
+## Installation
 
 ### Backend
 
-1. Navigate into backend directory:
-
 ```bash
 cd backend
-```
 
-2. Create and activate a Python virtual environment:
-
-```bash
 python -m venv venv
+
 # Windows
 venv\Scripts\activate
-# macOS/Linux
-source venv/bin/activate
-```
 
-3. Install dependencies:
-
-```bash
 pip install -r requirements.txt
-```
 
-4. Create `backend/.env` using the example:
-
-```env
-MEM0_API_KEY="your_mem0_api_key_here"
-OLLAMA_MODEL="llama3.2"
-OLLAMA_HOST="http://localhost:11434"
-MEM0_USER_ID="your_default_user_id"
-```
-4. (Optional) Configure the frontend API base URL by creating `frontend/.env` with:
-
-```env
-VITE_API_BASE_URL="http://localhost:8000/api"
-```
-5. Start the backend:
-
-```bash
-uvicorn app:app --host 0.0.0.0 --port 8000 --reload
+uvicorn app:app --reload
 ```
 
 ### Frontend
 
-1. Open a second terminal and navigate to the frontend directory:
-
 ```bash
 cd frontend
-```
 
-2. Install dependencies:
-
-```bash
 npm install
-```
 
-3. Start the development server:
-
-```bash
 npm run dev
 ```
 
-4. Open the app in the browser at the address shown by Vite.
+---
 
-## Usage
+## Environment Variables
 
-- Visit `/chat` to ask questions and chat with Nexus AI.
-- Visit `/memory` to inspect and manage stored memories.
-- Visit `/settings` to clear history or memories.
+Create a `.env` file:
 
-## Notes
+```env
+MEM0_API_KEY=your_key
+OLLAMA_MODEL=llama3.2
+OLLAMA_HOST=http://localhost:11434
+MEM0_USER_ID=default_user
+```
 
-- This project uses a local Ollama model host and Mem0 AI memory store.
-- The in-memory conversation history is per session and not persisted across server restarts.
+---
 
-## Project improvements made
+## Future Improvements
 
-- Fixed frontend greeting persistence when loading history.
-- Added `backend/.env.example` to document required environment variables.
+- RAG integration
+- Vector databases
+- LangChain orchestration
+- Multi-modal memory
+- Memory confidence scoring
+- LangGraph workflows
 
-## Why this is resume-worthy
+---
 
-- Demonstrates a complete AI system from UI to backend.
-- Shows experience with prompt engineering and agent workflows.
-- Implements persistent memory and personalization logic.
-- Uses modern JavaScript tooling and Python production frameworks.
-- Includes system integration across React, FastAPI, Ollama, and Mem0.
+## Why This Project?
+
+Nexus AI demonstrates:
+
+- AI agent workflows
+- Long-term memory systems
+- Personalized AI assistants
+- Memory conflict resolution
+- Full-stack AI application development
+- Modern React and FastAPI architecture
+
+---
+
+## Author
+
+**Jeswanth**
+
+AI Engineer | Python | FastAPI | React | AI Applications
