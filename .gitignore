@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+chatbot/
+venv/
+.venv/
+
+# Env files
+.env
+.env.local
+.env.*
+!.env.example
+
+# Misc
+.DS_Store
+*.log
